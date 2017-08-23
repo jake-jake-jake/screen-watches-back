@@ -1,0 +1,11 @@
+# And upward.
+
+When you clicked the link on the previous [page](/1.html), your browser programmatically constructed an http `GET` request and sent it to this server, asking for the resource associated with the path '/2.html'. My server returned a response, the contents of which are this page, marked up in clean, semantic html. By that, I mean the the words of the page are wrapped in 'tags' that indicate (or try to, anyway) the meaning of its content. Paragraphs are wrapped in `<p>` tags, words that need *emphasis* get `<em>` tags, those that need **even more** might get `<strong>` tags; the cute rejoinder to the `onward` link from page 1 is wrapped in `<h1>` tags--h for 'heading', 1 for MOST IMPORTANT. You can view all of this in the source of the page.
+
+The html standard has all sorts of tags intended to accommodate myriad media, for users on a variety of devices. Not everyone on the web is like you. HTML tries to accommodate all sorts. How do the blind navigate the web? They use screen readers that intepret the semantic content of a page; text is read, and meaningful navigation is inferred from headings (`<h1>`, etc.). Those `alt` attributes you may have seen on `img` tags? That's the alternate description of what the image is supposed to depict. Similar examples flow out from the tags used to describe the richness that is the web. There are many more examples: learn [some of them](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA), and how the contemporary web is working to be better available for all.
+
+Of course in the wilds of the web, the diktats of a nerd consortium about markup are rarely followed. Spend some time looking at the source for pages <!-- (it's good fun, I promise: all those unremarked and forgotten comments, waiting for your eyes to prise open) -->and you'll encounter broken html and nested monstrosities. Pity the person who writes parsers for browsers, because it is a thankless job.
+
+At any rate, all the work of html is intended to be at the semantic level: the sense of the content, before its manner of display (its style) or its behavior. With html, you get a basic display of information, like what is on this page.
+
+To change the way html is displayed, most pages on the internet make use of [css](/3.hmtl).

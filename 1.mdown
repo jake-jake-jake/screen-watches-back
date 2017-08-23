@@ -1,0 +1,44 @@
+# This Screen Reads You, Too
+Nearly thirty years into its broad adoption, the Internet encompasses an astonishing breadth of daily life. It has subsumed the defining media of the previous century--television, radio, telephone--and become, for many people, the main means of accessing information and goods. Even if it is only used indirectly--your print newspaper, if you have one, would break down without the web--the Internet is how we find out about the weather, how to get home, what's good, what's bad, how to cook it, movie times and ticket prices, names of pets, and upward and so on.
+
+Though the net is ubiquitous, it remains mysterious. We use it without a basic appreciation of its marvelousness, its monstrosity. This has its dangers; they are not overblown--this screen reads you, too. And even if you don't care about how ad technologies invade your private thought and actions, if you don't consider the functioning of your daily necessities (and yes, if you read this, you _need_ the net), you are deeply incurious. Hell is full of the incurious. Don't be incurious. Know the how and what of what you need.
+
+Contemporary media are in very important ways never physically realized; when they appear on screens, they are less things than processes, processes that are largely out of viewers control. Stop the process, and the book, the song, or the show disappears[1]. The less you know about how a process works the more magical it may seem: flashes of light and sequences of charges on a disk or a grid may as well be incantations <!-- bonus: /aside-on-IP.html -->. Thankfully understanding how the Internet conveys its information, the syntax it uses to deliver cat gifs and also phone home to external servers, is not as complex as engineering the hardware that allows it to run. 
+
+This is partially because the protocol that undergirds it, which you probably know as http and which expands into Hyper Text Transfer Protocol<!-- LMGTFY: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol -->, was designed to be human readable. This might have been because the bureaucrats overseeing the geeks who created ARPAnet wanted a papertrail, or it may have been to ease confirmation of responses. For whatever reason the http `request`, if printed out, would be somewhat discernable. When your browser sent a request to my server to get this page, it looked something like this, which is what my browser sent the web server at the http address `www.alchemistowl.org/pocorgtfo/`:
+
+```GET /pocorgtfo/ HTTP/1.1
+Host: www.alchemistowl.org
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Referer: https://www.google.com/
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Language: en-US,en;q=0.8
+If-None-Match: "1800-53f7016bf18ad"
+If-Modified-Since: Sat, 10 Oct 2016 08:38:54 GMT```
+
+The first word in the request is the verb (yes, it is actually called that; even though `get` is actually an English verb, always remember the difference between GETting and getting). In the above, it is `GET`, which is what is generally used to retrieve a page or info from a given location. Another popular verb is `POST`, which allows you to send parameterized data to a location, where the server can do something with it, like verify that you are who you are by checking your username and your password. Other less common examples include `PUT`, `DELETE`, and `UPDATE`; they have their specialized uses, and you can read about them <!-- here: https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html --> if you like.
+
+The second part of the first line is the path: `/pocorgtfo/`. This tells the server receiving the request what material you are looking for. The particular structure of the path might remind you of a path on a file system; back in the halcyon days of the 90s, the path often actually was a path to an html file that existed on the webserver. For instance, `/www/public_html/Sites/wordz+projectz/this-screen-watches-you.html`. Today, this is not often the case. But the structure of URLs still contains this vestige of earlier design needs, like ~~ something ~~ or wedding vows.
+
+The third part of the first line specifies the protocol: `HTTP/1.1`, the old standby that has seen the rise and fall of Webs 1.0 and 2.0. It may finally be passing on into `HTTP/2.0`, and that has some very interesting consequences for the Internet, but for now, let's stick with the classics. You fully appreciate the new when you comprehend the old. 
+
+Below the first line are the `headers`, a series of key and value pairs that define attributes of the request, telling the server about, for instance, who refered the visitor to the site (I got to the POC||GTFO page by searching for it in Google; I was using--or was claiming to be using, it is impossible to tell from this--Google Chrome).
+
+The server receives the request, parses it and its headers, and returns a response, which might contain a header that looks something like this:
+
+```HTTP/1.1 304 Not Modified
+Date: Mon, 19 Dec 2016 01:50:49 GMT
+Server: Apache/2.4.16 (Unix) LibreSSL/2.2.2
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "1800-54f7016ef18ad"```
+
+Beneath that (actually, coming immediately after the specifically encoded marker for the end of the header, comes the response body, the html of the page itself): this is what you see when you view a webpage's source code. (Try it on this one: right click and view source, or maybe CTRL+ALT+U, depending on the flavor of your OS and browser.) 
+
+[Onward.](/2.html)
+
+1. To a certain extent this is true of other earlier media: you need equipment, a player and a television, to watch a VHS tape. Others are more completely reified: to read a printed book you need only eyes and literacy, which itself is the product of intensive effort that _embodies itself in your skull_ (thank a teacher today). But with proprietary media and computing, you need all those things and more: licenses and rights.
